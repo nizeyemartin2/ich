@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ISHA CodeCraft Hub | Where Innovation Meets Execution</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="main-header">
+    <div class="container">
+      <div class="logo">
+        <img src="logo3.png" alt="ISHA CodeCraft Hub Logo" />
+        <h1>ISHA CodeCraft Hub</h1>
+      </div>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li class="has-submenu">
+            <a href="#services">Services <span class="arrow-down">▼</span></a>
+            <ul class="submenu">
+              <li><a href="#software-dev-lab-summary">Software Development Lab</a></li>
+              <li><a href="#academic-assistance-summary">Academic Project Assistance</a></li>
+              <li><a href="#client-solutions-summary">Client Software Solutions</a></li>
+              <li><a href="#iot-embedded-summary">IoT & Embedded Device</a></li>
+              <li><a href="#internship-summary">Internship</a></li>
+            </ul>
+          </li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section id="hero" class="hero-section">
+    <div class="container">
+      <div class="hero-content">
+        <p class="tagline">Where Innovation Meets Execution</p>
+        <h2>Building Smart Systems for a Smarter Future</h2>
+        <a href="#services" class="btn btn-primary">Explore Our Services</a>
+        <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+      </div>
+      <div class="hero-image">
+        <img src="image1.png" alt="Person working on laptop illustration" />
+      </div>
+    </div>
+  </section>
+
+  <section id="services" class="services-section">
+    <div class="container">
+      <h2>Our Core Services</h2>
+      <div class="service-grid">
+        <div class="service-item" id="software-dev-lab-summary">
+          <img src="image2.png" alt="Software Development Icon" />
+          <h3>Software Development Lab</h3>
+          <p>Cutting-edge software solutions tailored to your needs, from concept to deployment.</p>
+        </div>
+        <div class="service-item" id="academic-assistance-summary">
+          <img src="image3.png" alt="Academic Assistance Icon" />
+          <h3>Academic Project Assistance</h3>
+          <p>Expert guidance and support for students on their academic and research projects.</p>
+        </div>
+        <div class="service-item" id="client-solutions-summary">
+          <img src="image4.png" alt="Client Solutions Icon" />
+          <h3>Client Software Solutions</h3>
+          <p>Custom software development, consulting, and integration for businesses of all sizes.</p>
+        </div>
+        <div class="service-item" id="iot-embedded-summary">
+          <img src="image5.png" alt="IoT Device Icon" />
+          <h3>IoT & Embedded Device</h3>
+          <p>Innovating with Internet of Things and embedded systems for smart environments.</p>
+        </div>
+        <div class="service-item" id="internship-summary">
+          <img src="path/to/internship-icon.png" alt="Internship Icon" />
+          <h3>Internship</h3>
+          <p>Opportunities for aspiring tech professionals to gain practical experience.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact-promo" class="contact-promo-section">
+    <div class="container">
+      <h2>Ready to Transform Your Ideas into Reality?</h2>
+      <p>Contact ISHA CodeCraft Hub today to discuss your project.</p>
+      <a href="#contact" class="btn btn-white">Request a Consultation</a>
+    </div>
+  </section>
+
+  <footer class="main-footer">
+    <div class="container">
+      <div class="footer-info">
+        <p>Location: Muhanga District, Rwanda</p>
+        <p>Phone: +250 737882210 | +250 73882210 (Please confirm primary)</p>
+        <p>Email: <a href="mailto:info@ishacodecraft.com">info@ishacodecraft.com</a> (Placeholder - **Please confirm this email**)</p>
+      </div>
+      <div class="footer-social">
+        <p>Follow Us:</p>
+        <a href="https://twitter.com/isha_codecraft" target="_blank" aria-label="X">
+          <img src="x-icon.png" alt="X Icon" />
+        </a>
+        <p>@isha_codecraft</p>
+      </div>
+      <div class="footer-qr">
+        <img src="qr-code.png" alt="QR Code" />
+      </div>
+      <div class="copyright">
+        <p>&copy; <span id="currentYear"></span> ISHA CodeCraft Hub. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("currentYear").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
