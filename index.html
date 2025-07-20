@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ISHA CodeCraft Hub | Where Innovation Meets Execution</title>
     <link rel="stylesheet" href="style.css">
-    </head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
 <body>
 
     <header class="main-header">
@@ -14,16 +15,23 @@
                 <img src="logo3.png" alt="ISHA CodeCraft Hub Logo">
                 <h1>ISHA CodeCraft Hub</h1>
             </div>
+            <button class="menu-toggle" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
             <nav class="main-nav">
                 <ul>
                     <li><a href="#home">Home</a></li>
                     <li><a href="#services">Services</a></li>
                     <li><a href="#about">About Us</a></li>
                     <li><a href="#contact">Contact</a></li>
-                    </ul>
+                </ul>
             </nav>
         </div>
     </header>
+
+    <div id="welcomeMessage" class="welcome-message">
+        <span class="emoji">👋</span> Welcome to the Birthplace of Innovation!
+    </div>
 
     <section id="hero" class="hero-section">
         <div class="container">
@@ -44,21 +52,21 @@
             <h2>Our Core Services</h2>
             <div class="service-grid">
                 <div class="service-item" id="software-research-summary">
-                  <img src="image0.png" alt="Software Research Icon">
-                  <h3>Software Research and Development Lab </h3>
-                  <p>Conducting cutting-edge research and development to pioneer innovative software solutions for future challenges, Research and develop innovative solutions in Machine Learning, IoT, and Embedded Systems. </p>
+                    <img src="image0.png" alt="Software Research Icon">
+                    <h3>Software Research and Development Lab</h3>
+                    <p>Conducting cutting-edge research and development to pioneer innovative software solutions for future challenges, Research and develop innovative solutions in Machine Learning, IoT, and Embedded Systems.</p>
                 </div>
-                <div class="service-item">
+                <div class="service-item" id="academic-assistance-summary">
                     <img src="image03.png" alt="Academic Assistance Icon">
                     <h3>Academic Project Assistance</h3>
                     <p>Expert guidance and support for students on their academic and research projects.</p>
                 </div>
-                <div class="service-item">
+                <div class="service-item" id="client-solutions-summary">
                     <img src="image4.png" alt="Client Solutions Icon">
                     <h3>Client Software Development</h3>
                     <p>Custom software development, consulting, and integration for businesses of all sizes.</p>
                 </div>
-                <div class="service-item">
+                <div class="service-item" id="iot-embedded-summary">
                     <img src="image5.png" alt="IoT Device Icon">
                     <h3>IoT & Embedded Devices</h3>
                     <p>Innovating with Internet of Things and embedded systems for smart environments.</p>
@@ -89,8 +97,8 @@
         <div class="container">
             <div class="footer-info">
                 <p>Location: Muhanga District, Rwanda</p>
-                <p>Phone: +250 737 882 210 | +250 737 882 210</p>
-                <p>Email: <a href="mailto:info@ishacodecraft.com">ishacodecrafthub.com</a></p>
+                <p>Phone: +250 737 882 210</p>
+                <p>Email: <a href="mailto:ishacodecrafthub@gmail.com">ishacodecrafthub@gmail.com</a></p>
             </div>
             <div class="footer-social">
                 <p>Follow Us:</p>
@@ -108,6 +116,36 @@
 
     <script>
         document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const body = document.body;
+            const mainNav = document.querySelector('.main-nav');
+            const welcomeMessage = document.getElementById('welcomeMessage');
+
+            if (menuToggle && mainNav) {
+                menuToggle.addEventListener('click', function() {
+                    body.classList.toggle('nav-open');
+                });
+
+                mainNav.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', function() {
+                        if (body.classList.contains('nav-open')) {
+                            body.classList.remove('nav-open');
+                        }
+                    });
+                });
+            }
+
+            // JavaScript for the welcome message (Toast/Snackbar)
+            if (welcomeMessage) {
+                // Show the message after 1 second (1000ms)
+                setTimeout(() => {
+                    welcomeMessage.classList.add('show');
+                    // Removed the second setTimeout that would hide the message
+                }, 1000);
+            }
+        });
     </script>
 </body>
 </html>

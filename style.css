@@ -12,6 +12,7 @@ body {
     line-height: 1.6;
     color: #333; /* Dark grey for text */
     background-color: #f4f4f4; /* Light background */
+    overflow-x: hidden; /* Prevent horizontal scroll on mobile menu */
 }
 
 .container {
@@ -63,6 +64,18 @@ body {
     color: var(--text-light);
 }
 
+/* Mobile Menu Toggle */
+.menu-toggle {
+    display: none; /* Hidden by default on desktop */
+    background: none;
+    border: none;
+    color: var(--text-light);
+    font-size: 2em;
+    cursor: pointer;
+    z-index: 1100; /* Above navigation */
+}
+
+/* Main Navigation (Desktop) */
 .main-nav ul {
     list-style: none;
     display: flex;
@@ -77,6 +90,8 @@ body {
     text-decoration: none;
     font-weight: 500;
     transition: color 0.3s ease;
+    padding: 10px 0; /* Give some clickable area */
+    display: block; /* Make the whole area clickable */
 }
 
 .main-nav ul li a:hover {
@@ -304,7 +319,9 @@ body {
 }
 
 
-/* Responsive Design */
+/* Responsive Design Media Queries */
+
+/* Tablet and Desktop specific styles (min-width: 768px) */
 @media (min-width: 768px) {
     .hero-section .container {
         flex-direction: row; /* Row layout on larger screens */
@@ -321,27 +338,83 @@ body {
     }
 }
 
+/* Mobile specific styles (max-width: 767px) */
 @media (max-width: 767px) {
     .main-header .container {
-        flex-direction: column;
-        text-align: center;
+        flex-direction: row; /* Keep logo and toggle on one row */
+        justify-content: space-between;
+        align-items: center;
     }
 
-    .main-header .logo {
-        margin-bottom: 15px;
+    .main-header .logo h1 {
+        font-size: 1.4em; /* Smaller logo text on mobile */
+    }
+
+    .main-header .logo img {
+        height: 60px; /* Smaller logo image on mobile */
+    }
+
+    .menu-toggle {
+        display: block; /* Show hamburger menu on mobile */
+    }
+
+    .main-nav {
+        position: fixed;
+        top: 0;
+        right: -100%; /* Start off-screen */
+        width: 70%; /* Adjust as needed */
+        height: 100%;
+        background-color: var(--primary-color);
+        box-shadow: -5px 0 15px rgba(0,0,0,0.2);
+        transition: right 0.3s ease-in-out;
+        padding-top: 80px; /* Space for header */
+        z-index: 999; /* Below toggle, above content */
+        overflow-y: auto; /* Enable scrolling for long menus */
+    }
+
+    body.nav-open .main-nav {
+        right: 0; /* Slide in */
+    }
+
+    body.nav-open .menu-toggle .fa-bars {
+        display: none; /* Hide bars icon */
+    }
+
+    body.nav-open .menu-toggle::before {
+        content: "\f00d"; /* Show times (X) icon */
+        font-family: "Font Awesome 5 Free"; /* Ensure Font Awesome is used */
+        font-weight: 900; /* Font Awesome solid icon weight */
     }
 
     .main-nav ul {
         flex-direction: column;
-        gap: 10px;
+        width: 100%;
     }
 
     .main-nav ul li {
         margin: 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Separator for clarity */
+        text-align: center; /* Center menu items */
+    }
+
+    .main-nav ul li:last-child {
+        border-bottom: none;
+    }
+
+    .main-nav ul li a {
+        padding: 15px 20px; /* Larger clickable area */
     }
 
     .hero-content h2 {
-        font-size: 2em;
+        font-size: 2em; /* Adjust hero heading size */
+    }
+
+    .hero-image {
+        margin-top: 30px; /* Add some space above the image on mobile */
+    }
+
+    .hero-image img {
+        max-width: 90%; /* Ensure image fits smaller screens */
     }
 
     .service-grid {
@@ -359,115 +432,50 @@ body {
         margin-bottom: 20px;
     }
 }
-/* ... (previous CSS code) ... */
 
-/* Main Navigation */
-.main-nav ul {
-    list-style: none;
-    display: flex;
-}
-
-.main-nav ul li {
-    margin-left: 25px;
-    position: relative; /* Essential for positioning the submenu */
-}
-
-.main-nav ul li a {
-    color: var(--text-light);
-    text-decoration: none;
+/* Welcome Message (Toast/Snackbar) Styles */
+.welcome-message {
+    position: fixed; /* Stays in place when scrolling */
+    top: 130px; /* Position from the top, adjust based on header height */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Precisely center horizontally */
+    background-color: #f0f0f0; /* Light background similar to the image */
+    color: #333; /* Dark text color */
+    padding: 10px 20px;
+    border-radius: 25px; /* Rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    font-size: 1em;
     font-weight: 500;
-    transition: color 0.3s ease;
-    padding: 10px 0; /* Give some clickable area */
-    display: block; /* Make the whole area clickable */
+    white-space: nowrap; /* Prevent text wrapping */
+    z-index: 2000; /* Ensure it's above other content */
+    opacity: 0; /* Initially hidden */
+    visibility: hidden; /* Initially hidden */
+    transition: all 0.5s ease-in-out; /* Smooth transition for showing/hiding */
 }
 
-.main-nav ul li a:hover {
-    color: var(--secondary-color);
+.welcome-message .emoji {
+    margin-right: 8px; /* Space between emoji and text */
 }
 
-/* Dropdown Menu Specific Styles */
-.has-submenu .arrow-down {
-    font-size: 0.7em;
-    margin-left: 5px;
-    vertical-align: middle;
-}
-/* Show the submenu on hover */
-.has-submenu:hover .submenu {
-    display: block;
-}
-/* Dropdown Menu Specific Styles */
-.submenu {
-    list-style: none; /* Removes bullet points */
-    display: none;    /* Hidden by default */
-    position: absolute; /* Allows positioning relative to parent */
-    background-color: var(--primary-color); /* Same as header background */
-    min-width: 220px; /* Adjust as needed */
-    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-    z-index: 1; /* Ensure it appears above other content */
-    top: 100%; /* Position right below the parent menu item */
-    left: 0;
-    border-top: 3px solid var(--secondary-color); /* Accent line */
-    padding: 5px 0; /* Vertical padding for the list */
+/* Class to show the message and apply the continuous animation */
+.welcome-message.show {
+    opacity: 1;
+    visibility: visible;
+    /* Initial slide-down effect when it appears */
+    transform: translateX(-50%) translateY(0); /* Start at its natural top position */
+    /* Apply the hover animation */
+    animation: hoverUpDown 2s infinite ease-in-out; /* Name, duration, repeat, timing function */
 }
 
-.submenu li {
-    margin: 0; /* Removes any default list item margins */
-}
-
-.submenu li a {
-    color: var(--text-light);
-    padding: 12px 20px; /* Padding for submenu links */
-    text-decoration: none;
-    display: block; /* Makes the entire link area clickable and ensures vertical stacking */
-    white-space: nowrap; /* Prevents text wrapping */
-    font-weight: 400; /* Lighter font for submenu items */
-}
-
-
-
-/* Show the submenu on hover */
-.has-submenu:hover .submenu {
-    display: block;
-}
-
-/* Adjustments for Mobile Responsiveness (if needed for the dropdown) */
-@media (max-width: 767px) {
-    .main-nav ul {
-        flex-direction: column;
-        width: 100%; /* Make menu full width */
-        background-color: var(--primary-color); /* Ensure background for collapsed menu */
+/* Keyframe animation for the continuous up and down movement */
+@keyframes hoverUpDown {
+    0% {
+        transform: translateX(-50%) translateY(0); /* Start at its natural top position */
     }
-
-    .main-nav ul li {
-        margin: 0;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Separator for clarity */
-        text-align: center; /* Center menu items */
+    50% {
+        transform: translateX(-50%) translateY(5px); /* Move slightly down */
     }
-
-    .main-nav ul li:last-child {
-        border-bottom: none;
-    }
-
-    .has-submenu {
-        width: 100%; /* Ensure full width for clickable area */
-    }
-
-    .submenu {
-        position: static; /* Make submenu stack vertically in mobile view */
-        width: 100%;
-        box-shadow: none;
-        border-top: none; /* No accent line in mobile */
-        background-color: #4B6E8C; /* Slightly different shade for submenu */
-        padding: 0;
-    }
-
-    .submenu li a {
-        padding: 10px 30px; /* Indent submenu items */
-        text-align: center; /* Center submenu items */
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05); /* Light separator */
-    }
-
-    .submenu li:last-child a {
-        border-bottom: none;
+    100% {
+        transform: translateX(-50%) translateY(0); /* Return to start position */
     }
 }
