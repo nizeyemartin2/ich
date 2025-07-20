@@ -1,3 +1,4 @@
+/* Basic Reset & Box Sizing */
 * {
     margin: 0;
     padding: 0;
@@ -5,10 +6,12 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: Arial, sans-serif; /* Fallback font */
+    /* If you link Google Font (e.g., Poppins) uncomment below: */
+    /* font-family: 'Poppins', sans-serif; */
     line-height: 1.6;
-    color: #333;
-    background-color: #f4f4f4;
+    color: #333; /* Dark grey for text */
+    background-color: #f4f4f4; /* Light background */
 }
 
 .container {
@@ -17,10 +20,10 @@ body {
     padding: 0 20px;
 }
 
-/* Color Variables */
+/* Colors (based on your image) */
 :root {
-    --primary-color: #364F6B;
-    --secondary-color: #FC5130;
+    --primary-color: #364F6B; /* Dark Blue/Grey */
+    --secondary-color: #FC5130; /* Orange */
     --text-dark: #333;
     --text-light: #fff;
     --bg-light: #f9f9f9;
@@ -49,9 +52,9 @@ body {
 }
 
 .main-header .logo img {
-    height: 40px;
+    height: 100px; /* Adjust logo size */
     margin-right: 10px;
-    filter: invert(100%);
+    filter: invert(100%); /* Make logo white if it's dark on a dark background */
 }
 
 .main-header .logo h1 {
@@ -60,17 +63,13 @@ body {
     color: var(--text-light);
 }
 
-/* Navigation */
 .main-nav ul {
     list-style: none;
     display: flex;
-    margin: 0;
-    padding: 0;
 }
 
 .main-nav ul li {
     margin-left: 25px;
-    position: relative;
 }
 
 .main-nav ul li a {
@@ -78,74 +77,27 @@ body {
     text-decoration: none;
     font-weight: 500;
     transition: color 0.3s ease;
-    padding: 10px 0;
-    display: block;
 }
 
 .main-nav ul li a:hover {
     color: var(--secondary-color);
 }
 
-/* Submenu */
-.has-submenu .arrow-down {
-    font-size: 0.7em;
-    margin-left: 5px;
-    vertical-align: middle;
-}
-
-.submenu {
-    list-style: none;
-    display: none;
-    position: absolute;
-    background-color: var(--primary-color);
-    min-width: 250px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    z-index: 1001;
-    top: 100%;
-    left: 0;
-    border-top: 3px solid var(--secondary-color);
-    padding: 5px 0;
-    flex-direction: column;
-}
-
-.submenu li {
-    margin: 0;
-    padding: 0;
-}
-
-.submenu li a {
-    color: var(--text-light);
-    padding: 12px 20px;
-    text-decoration: none;
-    display: block;
-    white-space: nowrap;
-    font-weight: 400;
-}
-
-.submenu li a:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-    color: var(--secondary-color);
-}
-
-.has-submenu:hover .submenu {
-    display: block;
-}
-
 /* Hero Section */
 .hero-section {
-    background: linear-gradient(to right, var(--primary-color), #4B6E8C);
+    background: linear-gradient(to right, var(--primary-color), #4B6E8C); /* Gradient from primary color */
     color: var(--text-light);
     padding: 80px 0;
-    text-align: center;
+    text-align: center; /* Default for mobile/smaller screens */
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 500px;
+    min-height: 500px; /* Ensure enough height */
 }
 
 .hero-section .container {
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* Stack on small screens */
     align-items: center;
     gap: 40px;
 }
@@ -171,13 +123,13 @@ body {
 }
 
 .hero-image {
-    flex-shrink: 0;
+    flex-shrink: 0; /* Don't shrink the image */
 }
 
 .hero-image img {
-    max-width: 300px;
+    max-width: 500px; /* Adjust as needed */
     height: auto;
-    border-radius: 8px;
+    border-radius: 12px; /* Soften edges if it's a photo */
 }
 
 /* Buttons */
@@ -198,7 +150,7 @@ body {
 }
 
 .btn-primary:hover {
-    background-color: #e64426;
+    background-color: #e64426; /* Slightly darker orange */
     transform: translateY(-2px);
 }
 
@@ -224,7 +176,7 @@ body {
     transform: translateY(-2px);
 }
 
-/* Services */
+/* Services Section */
 .services-section {
     padding: 60px 0;
     background-color: var(--bg-light);
@@ -258,7 +210,7 @@ body {
 }
 
 .service-item img {
-    height: 60px;
+    height: 100px; /* Icon size */
     margin-bottom: 15px;
 }
 
@@ -273,7 +225,7 @@ body {
     font-size: 0.95em;
 }
 
-/* Contact Promo */
+/* Contact Promo Section */
 .contact-promo-section {
     background-color: var(--secondary-color);
     color: var(--text-light);
@@ -304,10 +256,10 @@ body {
 
 .main-footer .container {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
     justify-content: space-around;
-    align-items: center;
-    gap: 20px;
+    align-items: center; /* Align items vertically in center */
+    gap: 20px; /* Space between flex items */
 }
 
 .footer-info p,
@@ -326,9 +278,9 @@ body {
 }
 
 .footer-social img {
-    height: 24px;
+    height: 24px; /* Icon size */
     margin: 0 5px;
-    filter: invert(100%);
+    filter: invert(100%); /* Make social icons white */
     transition: transform 0.2s ease;
 }
 
@@ -337,24 +289,25 @@ body {
 }
 
 .footer-qr img {
-    max-width: 80px;
+    max-width: 80px; /* Adjust QR code size */
     height: auto;
-    background-color: var(--text-light);
+    background-color: var(--text-light); /* QR code usually white background */
     padding: 5px;
     border-radius: 5px;
 }
 
 .copyright {
-    width: 100%;
+    width: 100%; /* Take full width on a new line */
     margin-top: 20px;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     padding-top: 15px;
 }
 
-/* Responsive */
+
+/* Responsive Design */
 @media (min-width: 768px) {
     .hero-section .container {
-        flex-direction: row;
+        flex-direction: row; /* Row layout on larger screens */
         text-align: left;
     }
 
@@ -380,14 +333,115 @@ body {
 
     .main-nav ul {
         flex-direction: column;
-        width: 100%;
-        background-color: var(--primary-color);
+        gap: 10px;
     }
 
     .main-nav ul li {
         margin: 0;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .hero-content h2 {
+        font-size: 2em;
+    }
+
+    .service-grid {
+        grid-template-columns: 1fr; /* Single column on small screens */
+    }
+
+    .main-footer .container {
+        flex-direction: column;
         text-align: center;
+    }
+
+    .footer-info,
+    .footer-social,
+    .footer-qr {
+        margin-bottom: 20px;
+    }
+}
+/* ... (previous CSS code) ... */
+
+/* Main Navigation */
+.main-nav ul {
+    list-style: none;
+    display: flex;
+}
+
+.main-nav ul li {
+    margin-left: 25px;
+    position: relative; /* Essential for positioning the submenu */
+}
+
+.main-nav ul li a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    padding: 10px 0; /* Give some clickable area */
+    display: block; /* Make the whole area clickable */
+}
+
+.main-nav ul li a:hover {
+    color: var(--secondary-color);
+}
+
+/* Dropdown Menu Specific Styles */
+.has-submenu .arrow-down {
+    font-size: 0.7em;
+    margin-left: 5px;
+    vertical-align: middle;
+}
+/* Show the submenu on hover */
+.has-submenu:hover .submenu {
+    display: block;
+}
+/* Dropdown Menu Specific Styles */
+.submenu {
+    list-style: none; /* Removes bullet points */
+    display: none;    /* Hidden by default */
+    position: absolute; /* Allows positioning relative to parent */
+    background-color: var(--primary-color); /* Same as header background */
+    min-width: 220px; /* Adjust as needed */
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    z-index: 1; /* Ensure it appears above other content */
+    top: 100%; /* Position right below the parent menu item */
+    left: 0;
+    border-top: 3px solid var(--secondary-color); /* Accent line */
+    padding: 5px 0; /* Vertical padding for the list */
+}
+
+.submenu li {
+    margin: 0; /* Removes any default list item margins */
+}
+
+.submenu li a {
+    color: var(--text-light);
+    padding: 12px 20px; /* Padding for submenu links */
+    text-decoration: none;
+    display: block; /* Makes the entire link area clickable and ensures vertical stacking */
+    white-space: nowrap; /* Prevents text wrapping */
+    font-weight: 400; /* Lighter font for submenu items */
+}
+
+
+
+/* Show the submenu on hover */
+.has-submenu:hover .submenu {
+    display: block;
+}
+
+/* Adjustments for Mobile Responsiveness (if needed for the dropdown) */
+@media (max-width: 767px) {
+    .main-nav ul {
+        flex-direction: column;
+        width: 100%; /* Make menu full width */
+        background-color: var(--primary-color); /* Ensure background for collapsed menu */
+    }
+
+    .main-nav ul li {
+        margin: 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Separator for clarity */
+        text-align: center; /* Center menu items */
     }
 
     .main-nav ul li:last-child {
@@ -395,26 +449,22 @@ body {
     }
 
     .has-submenu {
-        width: 100%;
+        width: 100%; /* Ensure full width for clickable area */
     }
 
     .submenu {
-        position: static;
+        position: static; /* Make submenu stack vertically in mobile view */
         width: 100%;
         box-shadow: none;
-        border-top: none;
-        background-color: #4B6E8C;
+        border-top: none; /* No accent line in mobile */
+        background-color: #4B6E8C; /* Slightly different shade for submenu */
         padding: 0;
     }
 
-    .submenu li {
-        display: block;
-        text-align: center;
-    }
-
     .submenu li a {
-        padding: 10px 30px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        padding: 10px 30px; /* Indent submenu items */
+        text-align: center; /* Center submenu items */
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05); /* Light separator */
     }
 
     .submenu li:last-child a {
